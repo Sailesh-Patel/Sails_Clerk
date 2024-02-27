@@ -1,10 +1,13 @@
 package com.Inc.Project1.BE.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Item {
@@ -19,6 +22,10 @@ public class Item {
 	private String description;
 	@Column(nullable = false)
 	private double price;
+
+	@JsonManagedReference
+	@ManyToOne
+	private Basket basket;
 
 	public Item() {
 		super();
@@ -62,6 +69,14 @@ public class Item {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public Basket getBasket() {
+		return basket;
+	}
+
+	public void setBasket(Basket basket) {
+		this.basket = basket;
 	}
 
 }

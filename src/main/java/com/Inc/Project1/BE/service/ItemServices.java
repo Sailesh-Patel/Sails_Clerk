@@ -1,4 +1,4 @@
-package com.Inc.Project1.BE.services;
+package com.Inc.Project1.BE.service;
 
 import java.util.List;
 import java.util.Optional;
@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.Inc.Project1.BE.domain.Item;
-import com.Inc.Project1.BE.repos.ItemRepo;
+import com.Inc.Project1.BE.repo.ItemRepo;
 
 @Service
 public class ItemServices {

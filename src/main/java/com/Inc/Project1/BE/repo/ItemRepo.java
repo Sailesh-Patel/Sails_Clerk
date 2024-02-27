@@ -1,4 +1,4 @@
-package com.Inc.Project1.BE.repos;
+package com.Inc.Project1.BE.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

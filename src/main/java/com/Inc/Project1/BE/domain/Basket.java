@@ -1,10 +1,15 @@
 package com.Inc.Project1.BE.domain;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Basket {
@@ -18,6 +23,10 @@ public class Basket {
 	private Double price;
 	@Column(nullable = false)
 	private Double quantity;
+
+	@JsonManagedReference
+	@OneToMany(mappedBy = "basket")
+	private List<Item> items;
 
 	public Basket() {
 		super();
@@ -53,6 +62,14 @@ public class Basket {
 
 	public void setQuantity(Double quantity) {
 		this.quantity = quantity;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
 	}
 
 }

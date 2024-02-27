@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Inc.Project1.BE.domain.Item;
-import com.Inc.Project1.BE.services.ItemServices;
+import com.Inc.Project1.BE.service.ItemServices;
 
 @RestController
 @CrossOrigin
