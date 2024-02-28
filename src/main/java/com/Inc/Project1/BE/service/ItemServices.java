@@ -70,15 +70,15 @@ public class ItemServices {
 		return ResponseEntity.ok(updated);
 	}
 
-	// Remove item from basket
-	public ResponseEntity<Object> removeItem(int itemId, int basketId) {
-		Optional<Item> toRemoveItem = this.repo.findById(itemId);
+	// Add item to basket
+	public ResponseEntity<Object> addToBasket(int itemId, int basketId) {
+		Optional<Item> toAddToBasket = this.repo.findById(itemId);
 
-		if (toRemoveItem.isEmpty()) {
-			return new ResponseEntity<Object>("This item doesn' exist", HttpStatus.NOT_FOUND);
+		if (toAddToBasket.isEmpty()) {
+			return new ResponseEntity<Object>("This item doesn't exist", HttpStatus.NOT_FOUND);
 		}
 
-		Item exists = toRemoveItem.get();
+		Item exists = toAddToBasket.get();
 
 		if (exists.getBasket() != null) {
 			return new ResponseEntity<Object>("Item is out of stock", HttpStatus.BAD_REQUEST);
@@ -97,14 +97,14 @@ public class ItemServices {
 
 	}
 
-	// Add item to basket
-	public ResponseEntity<Object> addItem(int itemId) {
-		Optional<Item> toRemoveItem = this.repo.findById(itemId);
-		if (toRemoveItem.isEmpty()) {
+	// Remove item from basket
+	public ResponseEntity<Object> removeFromBasket(int itemId) {
+		Optional<Item> toRemoveFromBasket = this.repo.findById(itemId);
+		if (toRemoveFromBasket.isEmpty()) {
 			return new ResponseEntity<Object>("This item doesn' exist", HttpStatus.NOT_FOUND);
 		}
 
-		Item exists = toRemoveItem.get();
+		Item exists = toRemoveFromBasket.get();
 		exists.setBasket(null);
 		Item addedItem = this.repo.save(exists);
 		return ResponseEntity.ok(addedItem);

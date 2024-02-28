@@ -53,16 +53,16 @@ public class ItemController {
 		return this.service.updateItem(id, itemDetails);
 	}
 
-	// Remove item from basket
-	@PatchMapping("removeItem/{itemId}/{basketId}")
-	public ResponseEntity<Object> removeItem(@PathVariable int itemId, @PathVariable int basketId) {
-		return this.service.removeItem(itemId, basketId);
+	// Add item to basket
+	@PatchMapping("add/{itemId}/{basketId}")
+	public ResponseEntity<Object> addToBasket(@PathVariable int itemId, @PathVariable int basketId) {
+		return this.service.addToBasket(itemId, basketId);
 	}
 
-	// Add item to basket
-	@PatchMapping("addItem/{itemId}")
-	public ResponseEntity<Object> addItem(@PathVariable int itemId) {
-		return this.service.addItem(itemId);
+	// Remove item from basket
+	@PatchMapping("remove/{itemId}")
+	public ResponseEntity<Object> removeFromBasket(@PathVariable int itemId) {
+		return this.service.removeFromBasket(itemId);
 	}
 
 	// Delete items by ID
