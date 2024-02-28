@@ -65,6 +65,10 @@ public class ItemServices {
 		if (itemDetails.getQuantity() != 0) {
 			exists.setQuantity(itemDetails.getQuantity());
 		}
+
+		if (itemDetails.getBasket() != null) {
+			exists.setBasket(itemDetails.getBasket());
+		}
 		// saves new data inside the fields and returns new data
 		Item updated = this.repo.save(exists);
 		return ResponseEntity.ok(updated);
