@@ -1,6 +1,6 @@
 package com.Inc.Project1.BE.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,11 +19,9 @@ public class Item {
 	@Column(nullable = false)
 	private double quantity;
 	@Column(nullable = false)
-	private String description;
-	@Column(nullable = false)
 	private double price;
 
-	@JsonManagedReference
+	@JsonBackReference
 	@ManyToOne
 	private Basket basket;
 
@@ -53,14 +51,6 @@ public class Item {
 
 	public void setQuantity(double quantity) {
 		this.quantity = quantity;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public double getPrice() {

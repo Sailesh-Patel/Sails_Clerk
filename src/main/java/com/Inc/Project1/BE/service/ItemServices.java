@@ -7,16 +7,20 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.Inc.Project1.BE.domain.Basket;
 import com.Inc.Project1.BE.domain.Item;
+import com.Inc.Project1.BE.repo.BasketRepo;
 import com.Inc.Project1.BE.repo.ItemRepo;
 
 @Service
 public class ItemServices {
 	private ItemRepo repo;
+	private BasketRepo basketRepo;
 
-	public ItemServices(ItemRepo repo) {
+	public ItemServices(ItemRepo repo, BasketRepo basketRepo) {
 		super();
 		this.repo = repo;
+		this.basketRepo = basketRepo;
 	}
 
 	// Creating new item
@@ -55,9 +59,6 @@ public class ItemServices {
 		if (itemDetails.getName() != null) {
 			exists.setName(itemDetails.getName());
 		}
-		if (itemDetails.getDescription() != null) {
-			exists.setDescription(itemDetails.getDescription());
-		}
 		if (itemDetails.getPrice() != 0) {
 			exists.setPrice(itemDetails.getPrice());
 		}
@@ -67,6 +68,47 @@ public class ItemServices {
 		// saves new data inside the fields and returns new data
 		Item updated = this.repo.save(exists);
 		return ResponseEntity.ok(updated);
+	}
+
+	// Remove item from basket
+	public ResponseEntity<Object> removeItem(int itemId, int basketId) {
+		Optional<Item> toRemoveItem = this.repo.findById(itemId);
+
+		if (toRemoveItem.isEmpty()) {
+			return new ResponseEntity<Object>("This item doesn' exist", HttpStatus.NOT_FOUND);
+		}
+
+		Item exists = toRemoveItem.get();
+
+		if (exists.getBasket() != null) {
+			return new ResponseEntity<Object>("Item is out of stock", HttpStatus.BAD_REQUEST);
+		}
+
+		Optional<Basket> customer = this.basketRepo.findById(basketId);
+
+		if (customer.isEmpty()) {
+			return new ResponseEntity<Object>("Basket with this ID does not exist", HttpStatus.BAD_REQUEST);
+		}
+
+		exists.setBasket(customer.get());
+
+		Item updated = this.repo.save(exists);
+		return ResponseEntity.ok(updated);
+
+	}
+
+	// Add item to basket
+	public ResponseEntity<Object> addItem(int itemId) {
+		Optional<Item> toRemoveItem = this.repo.findById(itemId);
+		if (toRemoveItem.isEmpty()) {
+			return new ResponseEntity<Object>("This item doesn' exist", HttpStatus.NOT_FOUND);
+		}
+
+		Item exists = toRemoveItem.get();
+		exists.setBasket(null);
+		Item addedItem = this.repo.save(exists);
+		return ResponseEntity.ok(addedItem);
+
 	}
 
 	// Remove item by ID

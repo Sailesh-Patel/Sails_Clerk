@@ -19,10 +19,10 @@ public class Basket {
 	private Integer id;
 	@Column(nullable = false)
 	private String name;
-	@Column(nullable = false)
-	private Double price;
-	@Column(nullable = false)
-	private Double quantity;
+//	@Column(nullable = false)
+//	private Double price;
+//	@Column(nullable = false)
+//	private Double quantity;
 
 	@JsonManagedReference
 	@OneToMany(mappedBy = "basket")
@@ -46,22 +46,6 @@ public class Basket {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Double getPrice() {
-		return price;
-	}
-
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
-	public Double getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(Double quantity) {
-		this.quantity = quantity;
 	}
 
 	public List<Item> getItems() {

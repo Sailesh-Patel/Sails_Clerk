@@ -66,14 +66,6 @@ public class BasketService {
 
 			body.setName(newBasket.getName());
 
-		if (newBasket.getPrice() != null)
-
-			body.setPrice(newBasket.getPrice());
-
-		if (newBasket.getQuantity() != null)
-
-			body.setQuantity(newBasket.getQuantity());
-
 		this.repo.save(body);
 
 		return ResponseEntity.ok(body);
