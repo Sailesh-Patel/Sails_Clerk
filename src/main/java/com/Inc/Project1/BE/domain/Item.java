@@ -16,8 +16,6 @@ public class Item {
 //	@Column(nullable = false)
 	private String name;
 //	@Column(nullable = false)
-	private double quantity;
-//	@Column(nullable = false)
 	private double price;
 
 	@JsonBackReference(value = "for-item")
@@ -42,14 +40,6 @@ public class Item {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public double getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(double quantity) {
-		this.quantity = quantity;
 	}
 
 	public double getPrice() {
