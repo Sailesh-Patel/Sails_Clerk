@@ -18,6 +18,10 @@ public class Item {
 //	@Column(nullable = false)
 	private double price;
 
+	private int quantity;
+
+	private String image;
+
 	@JsonBackReference(value = "for-item")
 	@ManyToOne
 	private Basket basket;
@@ -48,6 +52,22 @@ public class Item {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public Basket getBasket() {

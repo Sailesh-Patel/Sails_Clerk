@@ -63,6 +63,13 @@ public class ItemServices {
 			exists.setPrice(itemDetails.getPrice());
 		}
 
+		if (itemDetails.getQuantity() != 0) {
+			exists.setQuantity(itemDetails.getQuantity());
+		}
+		if (itemDetails.getImage() != null) {
+			exists.setImage(itemDetails.getImage());
+		}
+
 		if (itemDetails.getBasket() != null) {
 			exists.setBasket(itemDetails.getBasket());
 		}
