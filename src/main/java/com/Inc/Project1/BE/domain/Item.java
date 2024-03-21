@@ -22,6 +22,10 @@ public class Item {
 
 	private String image;
 
+	private String imageAlt;
+
+	private String bulkSize;
+
 	@JsonBackReference(value = "for-item")
 	@ManyToOne
 	private Basket basket;
@@ -70,12 +74,28 @@ public class Item {
 		this.image = image;
 	}
 
+	public String getImageAlt() {
+		return imageAlt;
+	}
+
+	public void setImageAlt(String imageAlt) {
+		this.imageAlt = imageAlt;
+	}
+
 	public Basket getBasket() {
 		return basket;
 	}
 
 	public void setBasket(Basket basket) {
 		this.basket = basket;
+	}
+
+	public String getBulkSize() {
+		return bulkSize;
+	}
+
+	public void setBulkSize(String bulkSize) {
+		this.bulkSize = bulkSize;
 	}
 
 }
