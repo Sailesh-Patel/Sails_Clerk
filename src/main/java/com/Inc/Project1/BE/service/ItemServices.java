@@ -63,6 +63,18 @@ public class ItemServices {
 			exists.setPrice(itemDetails.getPrice());
 		}
 
+		if (itemDetails.getQuantity() != 0) {
+			exists.setQuantity(itemDetails.getQuantity());
+		}
+		if (itemDetails.getBulkSize() != null) {
+			exists.setBulkSize(itemDetails.getBulkSize());
+		}
+		if (itemDetails.getImage() != null) {
+			exists.setImage(itemDetails.getImage());
+		}
+		if (itemDetails.getImageAlt() != null) {
+			exists.setImageAlt(itemDetails.getImageAlt());
+		}
 		if (itemDetails.getBasket() != null) {
 			exists.setBasket(itemDetails.getBasket());
 		}
