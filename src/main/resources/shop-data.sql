@@ -1,2 +1,3 @@
 INSERT INTO `basket` VALUES (default, 'Basket 1');
-INSERT INTO `item` VALUES (default, 'Milk', 2.0, 50.0, 1);
+
+INSERT INTO `checkout` VALUES (default, 'test@test.co.uk', '07845784965')

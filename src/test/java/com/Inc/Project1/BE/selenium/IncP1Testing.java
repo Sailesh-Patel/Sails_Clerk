@@ -2,6 +2,7 @@ package com.Inc.Project1.BE.selenium;
 
 import java.time.Duration;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -40,14 +41,29 @@ public class IncP1Testing {
 	}
 
 	@Test
-	@Order(1)
-
-	void testLogin() throws InterruptedException {
-		this.driver.get("http://localhost:" + this.port);
-
-		WebElement clickUsername = this.driver
-				.findElement(By.cssSelector("#root > div > div > form > input[type=text]:nth-child(1)"));
-		clickUsername.click();
-	}
-
+	@Order(1)	
+	
+	
+//	void testCreateBasket() 
+//
+//		this.driver.get("http://localhost:" + this.port);
+//
+//		WebElement newBasketName = this.driver.findElement(By.id("#name"));
+//		newBasketName.sendKeys("John");
+//
+//		WebElement newPassword = this.driver
+//				.findElement(By.cssSelector("#CreateBasket > div > div > input[type=password]:nth-child(5)"));
+//		newPassword.sendKeys("Joe");
+//
+//		WebElement submit = this.driver.findElement(By.id("#SubmitCreateBasket"));
+//		submit.click();
+//
+//		WebElement selectBasketPage = this.driver
+//				.findElement(By.id("#navbarNavAltMarkup > div > ul > li:nth-child(4)"));
+//		selectBasketPage.click();
+//
+//		WebElement checkBasketName = this.driver
+//				.findElement(By.cssSelector("/html/body/div/div/div/div/div/div/div/div[2]/h3/text()[2]"));
+//		Assertions.assertEquals("Basket Name: Basket 1", checkBasketName.getText());
+//	}
 }
