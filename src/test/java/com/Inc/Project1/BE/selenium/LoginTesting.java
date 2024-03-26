@@ -2,6 +2,7 @@ package com.Inc.Project1.BE.selenium;
 
 import java.time.Duration;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -22,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddToBasketTesting {
+public class LoginTesting {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -44,52 +45,31 @@ public class AddToBasketTesting {
 	void addItemTest() throws InterruptedException {
 
 		this.driver.get("http://localhost:3000");
-		WebElement adminButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
-		adminButton.click();
 
-		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
-		itemName.sendKeys("Madri");
+		WebElement username = this.driver.findElement(By.cssSelector("#name"));
+		username.sendKeys("Alco");
 
-		WebElement itemPrice = this.driver.findElement(By.cssSelector("#price"));
-		itemPrice.sendKeys("18.99");
+		WebElement password = this.driver
+				.findElement(By.cssSelector("#CreateBasket > div > div > input[type=password]:nth-child(5)"));
+		password.sendKeys("Holic");
 
-		WebElement itemImage = this.driver.findElement(By.cssSelector("#image"));
-		itemImage.sendKeys(
-				"https://www.thebottleclub.com/cdn/shop/files/madri-excepcional-lager-beer-12-x-330-ml-beer-32841797271667.jpg?v=1703680696&width=500");
-
-		WebElement itemImageAlt = this.driver.findElement(By.cssSelector("#imageAlt"));
-		itemImageAlt.sendKeys("12 Bottles of Madri Lager");
-
-		WebElement itemQuantity = this.driver.findElement(By.cssSelector("#quantity"));
-		itemQuantity.sendKeys("1");
-
-		WebElement itemBulkSize = this.driver.findElement(By.cssSelector("#bulkSize"));
-		itemBulkSize.sendKeys("12");
-
-		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
+		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
 		submit.click();
 		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(2000); // Wait for 2 seconds
+		Thread.sleep(800); // 0.8 seconds
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		// move to item page to add to cart
-		WebElement itemsButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
-		itemsButton.click();
-
-		WebElement add = this.driver.findElement(By.cssSelector("#itemCard > div > button"));
-		add.click();
-		Thread.sleep(1000);
-
-		WebElement basketButton = this.driver
+		WebElement basketIcon = this.driver
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(4) > a"));
-		basketButton.click();
+		basketIcon.click();
+		// Add a short wait if necessary to ensure the click has been processed
+		Thread.sleep(800); // 0.8 seconds
+		// Now refresh the page
+		driver.navigate().refresh();
 
-		WebElement checkoutButton = this.driver
-				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(3) > button"));
-		checkoutButton.click();
-
+		WebElement checkBasketName = this.driver
+				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(3) > h3"));
+		Assertions.assertEquals("Basket Name: Alco", checkBasketName.getText());
 	}
 }
