@@ -80,7 +80,7 @@ public class AddItemDeleteFETesting {
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
 		adminButton2.click();
 
-		Thread.sleep(800); // Wait for 2 seconds
+		Thread.sleep(800); // Wait for 8 milliseconds
 
 		// second Item
 
