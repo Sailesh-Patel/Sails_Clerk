@@ -44,6 +44,21 @@ public class AddToBasketTesting {
 	void addItemTest() throws InterruptedException {
 
 		this.driver.get("http://localhost:3000");
+
+		WebElement username = this.driver.findElement(By.cssSelector("#name"));
+		username.sendKeys("Alco");
+
+		WebElement password = this.driver
+				.findElement(By.cssSelector("#CreateBasket > div > div > input[type=password]:nth-child(5)"));
+		password.sendKeys("Holic");
+
+		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
+		submit.click();
+		// Add a short wait if necessary to ensure the click has been processed
+		Thread.sleep(800); // 0.8 seconds
+		// Now refresh the page
+		driver.navigate().refresh();
+
 		WebElement adminButton = this.driver
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
 		adminButton.click();
@@ -67,8 +82,8 @@ public class AddToBasketTesting {
 		WebElement itemBulkSize = this.driver.findElement(By.cssSelector("#bulkSize"));
 		itemBulkSize.sendKeys("12");
 
-		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
-		submit.click();
+		WebElement submit2 = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
+		submit2.click();
 		// Add a short wait if necessary to ensure the click has been processed
 		Thread.sleep(2000); // Wait for 2 seconds
 		// Now refresh the page

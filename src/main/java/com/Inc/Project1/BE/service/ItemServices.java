@@ -110,20 +110,6 @@ public class ItemServices {
 
 	}
 
-	// Remove item from basket
-	public ResponseEntity<Object> removeFromBasket(int itemId) {
-		Optional<Item> toRemoveFromBasket = this.repo.findById(itemId);
-		if (toRemoveFromBasket.isEmpty()) {
-			return new ResponseEntity<Object>("This item doesn' exist", HttpStatus.NOT_FOUND);
-		}
-
-		Item exists = toRemoveFromBasket.get();
-		exists.setBasket(null);
-		Item addedItem = this.repo.save(exists);
-		return ResponseEntity.ok(addedItem);
-
-	}
-
 	// Remove item by ID
 	public boolean deleteItem(int id) {
 		this.repo.deleteById(id);

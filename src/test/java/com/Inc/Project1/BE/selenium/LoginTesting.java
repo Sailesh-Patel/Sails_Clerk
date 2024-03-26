@@ -53,8 +53,8 @@ public class LoginTesting {
 				.findElement(By.cssSelector("#CreateBasket > div > div > input[type=password]:nth-child(5)"));
 		password.sendKeys("Holic");
 
-		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
-		submit.click();
+		WebElement submit1 = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
+		submit1.click();
 		// Add a short wait if necessary to ensure the click has been processed
 		Thread.sleep(800); // 0.8 seconds
 		// Now refresh the page
@@ -69,7 +69,7 @@ public class LoginTesting {
 		driver.navigate().refresh();
 
 		WebElement checkBasketName = this.driver
-				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(3) > h3"));
+				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(2) > h3"));
 		Assertions.assertEquals("Basket Name: Alco", checkBasketName.getText());
 	}
 }
