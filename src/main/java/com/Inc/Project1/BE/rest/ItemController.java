@@ -59,10 +59,10 @@ public class ItemController {
 	}
 
 	// Remove item from basket
-	@PatchMapping("remove/{itemId}")
-	public ResponseEntity<Object> removeFromBasket(@PathVariable int itemId) {
-		return this.service.removeFromBasket(itemId);
-	}
+//	@PatchMapping("remove/{itemId}")
+//	public ResponseEntity<Object> removeFromBasket(@PathVariable int itemId) {
+//		return this.service.removeFromBasket(itemId);
+//	}
 
 	// Delete items by ID
 	@DeleteMapping("/delete/{id}")
