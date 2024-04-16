@@ -10,7 +10,7 @@ function Support() {
             <br />
             <br />
             <h2>Alcoholics Anonymous</h2>
-            <a href="https://www.alcoholics-anonymous.org.uk/" target="_blank">
+            <a href="https://www.alcoholics-anonymous.org.uk/" target="url_blank">
                 <img src={Logo} alt="Clickable Alcoholics Anonymous Logo"
                     aria-labelledby="Clickable Alcoholics Anonymous Logo to be taken to Alcoholics Anonymous page"
                     width="10%" height="10%" />
@@ -26,7 +26,7 @@ function Support() {
             <br />
             <br />
             <h2>Uber</h2>
-            <a href="https://www.uber.com/gb/en/ride/" target="_blank">
+            <a href="https://www.uber.com/gb/en/ride/" target="url_blank">
                 <img src={Logo2} alt="Clickable Uber Logo"
                     aria-labelledby="Clickable Uber Logo to be taken to Uber page"
                     width="10%" height="10%" />
