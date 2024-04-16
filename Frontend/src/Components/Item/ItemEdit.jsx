@@ -4,7 +4,6 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function ItemEdit() {
 
-        const [id, setId] = useState("")
         const [name, setName] = useState("")
         const [price, setPrice] = useState("")
         const [quantity, setQuantity] = useState("")
@@ -12,7 +11,6 @@ function ItemEdit() {
         const [imageAlt, setImageAlt] = useState("")
         const navigate = useNavigate();
         const params = useParams();
-        const [items, setItems] = useState("")
         const [bulkSize, setBulkSize] = useState("")
 
 
