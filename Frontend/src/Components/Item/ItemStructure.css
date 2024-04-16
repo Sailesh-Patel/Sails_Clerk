@@ -1,0 +1,19 @@
+.list-group-item {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    font-size: 16px;
+    text-align: center;
+
+    min-width: 200px;
+    max-width: 200px;
+    min-height: 40px;
+    max-height: 40px;
+}
+
+.btn {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+
+}

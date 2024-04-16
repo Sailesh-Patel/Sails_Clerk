@@ -1,0 +1,6 @@
+.form {
+    border-color: black;  
+    border-width: .25px;  
+    border-style: solid; 
+    max-width: fit-content;
+}
