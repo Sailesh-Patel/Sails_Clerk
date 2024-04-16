@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import BasketStructure from "./BasketStructure";
 
 function BasketTable(props) {
 
-    const [name, setName] = useState("")
+ 
     const [baskets, setBaskets] = useState([]);
 
     function getBaskets() {

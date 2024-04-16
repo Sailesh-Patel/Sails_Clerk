@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -6,7 +6,7 @@ function CheckOut() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  const [baskets, setBaskets] = useState([]);
+  // const [baskets, setBaskets] = useState([]);
 
 
 
@@ -23,7 +23,7 @@ function CheckOut() {
       .catch((err) => console.error(err));
   };
 
-  const BasketExists = baskets.length > 0;
+  // const BasketExists = baskets.length > 0;
 return (
   <div>
 
