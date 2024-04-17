@@ -11,12 +11,6 @@ pipeline {
                bat "mvn test" 
             }
         }
-        stage("package") {
-            steps {
-                bat "npm pack"
-            }
-        }
-        
     }
     post {
           always {
