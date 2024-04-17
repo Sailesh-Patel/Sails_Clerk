@@ -6,11 +6,6 @@ pipeline {
                bat "mvn clean install" 
             }
         }
-         stage("springboot") {
-            steps {
-               bat "mvn spring-boot:run" 
-            }
-        }
         stage("run tests") {
             steps {
                bat "mvn test" 
