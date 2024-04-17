@@ -14,7 +14,7 @@ pipeline {
     }
     post {
           always {
-            archiveArtifacts artifacts: '*.tgz', followSymlinks: false
+            archiveArtifacts artifacts: '*.jar', followSymlinks: false
         }
     }
 }
