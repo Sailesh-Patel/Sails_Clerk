@@ -18,7 +18,7 @@ pipeline {
         }
     }
     post {
-        always {
+        success {
           sh 'Success.txt'
         }
     }
