@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage("run tests") {
-            bat "mvn test"
+            step {
+               bat "mvn test" 
+            }
         }
     }
     post {}
