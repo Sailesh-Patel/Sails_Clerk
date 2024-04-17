@@ -34,7 +34,7 @@ pipeline {
         }
         stage("selenium test") {
             steps {
-            bat 'java -cp target/selenium-1.0-SNAPSHOT.jar com.qa.selenium.SeleniumTests'
+            bat 'java -cp target/selenium-1.0-SNAPSHOT.jar com.Inc.Project1.BE.selenium'
         }
         }
     
