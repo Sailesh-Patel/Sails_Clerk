@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Selenium Test') {
             steps {
-                dir('front') {
+                dir('Frontend') {
                   bat 'npm run build'
                   bat 'xcopy /y /i build c:\\reactApp'
                 }
