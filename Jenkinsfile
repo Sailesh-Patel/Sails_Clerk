@@ -13,13 +13,13 @@ pipeline {
         }
              stage("build artifact") {
             steps {
-               bat 'echo' "artifact file" > generatedFile.txt 
+               bat echo "Test successful" > Success.txt
             }
         }
     }
     post {
         always {
-          archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true
+          Success.txt
         }
     }
 }
