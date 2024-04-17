@@ -11,10 +11,15 @@ pipeline {
                bat "mvn test" 
             }
         }
+             stage("build artifact") {
+            steps {
+               bat 'echo' "artifact file" > generatedFile.txt 
+            }
+        }
     }
     post {
         always {
-        echo "Test outcome" > Test.txt
+          archiveArtifacts artifacts: 'generatedFile.txt', onlyIfSuccessful: true
         }
     }
 }
