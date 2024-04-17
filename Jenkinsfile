@@ -11,19 +11,32 @@ pipeline {
                bat "mvn test" 
             }
         }
-        stage('Selenium Test') {
+        stage("npm install") {
             steps {
                 dir('Frontend') {
-                    bat 'npm install'
-                  bat 'npm run build'
-                  bat 'xcopy /y /i build c:\\reactApp'
+               bat "npm install" 
                 }
-                // bat 'appcmd add site /name:myapp /id:2 /physicalPath:c:\\reactApp /bindings:http/*:3000:'
-                withMaven(maven: 'M3') {
-                  bat 'mvn clean install'
-                }
-                bat 'java -cp target/selenium-1.0-SNAPSHOT.jar com.qa.selenium.SeleniumTests'
             }
+        }
+                stage("npm run build") {
+            steps {
+                dir('Frontend') {
+               bat "npm run build" 
+                }
+            }
+        }
+                stage("xcopy") {
+            steps {
+                  dir('Frontend') {
+               bat "xcopy /y /i build c:\\reactApp" 
+                  }
+            }
+        }
+        stage("mvn clean install") {
+            steps {
+               bat "mvn clean install" 
+            }
+            bat 'java -cp target/selenium-1.0-SNAPSHOT.jar com.qa.selenium.SeleniumTests'
         }
     
     }
