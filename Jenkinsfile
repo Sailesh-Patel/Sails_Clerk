@@ -14,7 +14,7 @@ pipeline {
     }
     post {
           always {
-            archiveArtifacts artifacts: '*.jar', followSymlinks: false
+            archiveArtifacts artifacts: 'testfile.txt', followSymlinks: false
         }
     }
 }
