@@ -14,7 +14,7 @@ pipeline {
     }
     post {
           always {
-            archiveArtifacts artifacts: 'testfile.txt', followSymlinks: false
+            archiveArtifacts artifacts: 'src/test/java/com/Inc/Project1/BE/selenium/testfile.txt', followSymlinks: false
         }
     }
 }
