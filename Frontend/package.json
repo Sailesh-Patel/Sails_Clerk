@@ -26,6 +26,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
-    "react-axe": "^3.5.4"
+    "react-axe": "^3.5.4",
+    "jest": "^29.7.0"
   }
 }
