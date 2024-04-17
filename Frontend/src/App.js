@@ -6,7 +6,7 @@ import PageForItem from './Components/Item/PageForItem.jsx';
 import CreateItemPage from './Components/Item/CreateItemPage.jsx';
 import BasketPage from './Components/Basket/BasketPage.jsx';
 import Logo from './Business.png';
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Login from './Components/Homepage/Login.jsx';
 import ItemEdit from './Components/Item/ItemEdit.jsx';
 import BasketEdit from './Components/Basket/BasketEdit.jsx';
@@ -20,15 +20,15 @@ import Support from './Components/Support/Support.jsx';
 function App() {
 
 
-  const [quantity, setQuantity] = useState(0);
+  // const [quantity, setQuantity] = useState(0);
 
-  const calculateTotalQuantity = (items) => {
-    if (!items || items.length === 0) {
-      return 0;
-    }
+  // const calculateTotalQuantity = (items) => {
+  //   if (!items || items.length === 0) {
+  //     return 0;
+  //   }
 
-    return items.reduce((total, item) => total + item.quantity, 0);
-  };
+  //   return items.reduce((total, item) => total + item.quantity, 0);
+  // };
 
 
   return (
@@ -40,9 +40,10 @@ function App() {
 
         <Router>
           <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="#" aria-labelled="Navigation bar"></a>
+            {/* <a class="navbar-brand" href="#" aria-labelled="Navigation bar"></a> */}
             <Link to="/"
-              aria-labelled='Navigation link to the login page'>
+              // aria-labelled='Navigation link to the login page'
+              >
               <img src={Logo} alt='Logo Icon' className="navbar-brand" width="75px" />
             </Link>
 

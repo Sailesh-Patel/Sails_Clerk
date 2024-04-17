@@ -22,7 +22,7 @@ function BasketTable(props) {
         console.log("Basket:", props.basket);
         basketComponents.push(
             <BasketStructure
-                key={basket.id + "" + "" + basket.name}
+                key={basket.id + " " + basket.name}
                 id={basket.id}
                 name={basket.name}
             />

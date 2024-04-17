@@ -19,7 +19,7 @@ function BasketEdit() {
                 setName(response.data.name);
             })
             .catch((error) => console.log(error));
-    }, []);
+    }, [params.id]);
 
     function editBasket() {
 

@@ -30,7 +30,7 @@ function ItemEdit() {
 
                 })
                 .catch((error) => console.log(error));
-        }, []);
+        }, [params.id]);
 
         function editItem() {
 

@@ -24,7 +24,7 @@ function ItemTable(props) {
         console.log("Items:", props.item);
         itemComponents.push(
             <ItemStructure
-                key={item.id + "" + "" + item.name}
+                key={item.id + " " + item.name}
                 id={item.id}
                 name={item.name}
                 price={item.price}
