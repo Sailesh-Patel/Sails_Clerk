@@ -13,7 +13,7 @@ pipeline {
         }
              stage("build artifact") {
             steps {
-               bat echo "Test successful" > Success.txt
+               sh 'echo "Test successful" > Success.txt'
             }
         }
     }
