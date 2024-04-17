@@ -13,7 +13,7 @@ function App() {
   <div class="p-3 mb-2 bg-warning text-dark" style={{ overflow: "auto" }}>
     <Router>
       <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#"></a>
+        <a class="navbar-brand" href="/"></a>
         <Link to="/">
             <img src={Logo} alt='Logo Icon' className="navbar-brand" width="75px" />
           </Link>

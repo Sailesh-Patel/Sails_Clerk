@@ -29,7 +29,7 @@ function ItemEdit() {
                     setBulkSize(response.data.bulkSize);
                 })
                 .catch((error) => console.log(error));
-        }, []);
+        }, [params.id]);
 
         function editItem() {
 
