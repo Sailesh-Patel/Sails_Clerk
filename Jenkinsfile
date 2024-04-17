@@ -14,6 +14,7 @@ pipeline {
         stage('Selenium Test') {
             steps {
                 dir('Frontend') {
+                    bat 'npm install'
                   bat 'npm run build'
                   bat 'xcopy /y /i build c:\\reactApp'
                 }
