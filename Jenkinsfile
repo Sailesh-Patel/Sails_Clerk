@@ -19,7 +19,7 @@ pipeline {
     }
     post {
         always {
-          Success.txt
+          'Success.txt'
         }
     }
 }
