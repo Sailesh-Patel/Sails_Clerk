@@ -11,15 +11,16 @@ pipeline {
                bat "mvn test" 
             }
         }
-             stage("build artifact") {
+        stage("package") {
             steps {
-               sh 'echo "Test successful" > Success.txt'
+                bat "npm pack"
             }
         }
+        
     }
     post {
-        success {
-          sh 'Success.txt'
+          always {
+            archiveArtifacts artifacts: '*.tgz', followSymlinks: false
         }
     }
 }
