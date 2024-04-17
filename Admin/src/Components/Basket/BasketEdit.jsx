@@ -4,11 +4,9 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function BasketEdit() {
 
-    const [id, setId] = useState("")
     const [name, setName] = useState("")
     const navigate = useNavigate();
     const params = useParams();
-    const [basket, setBasket] = useState("")
 
 
     useEffect(function getBasket() {

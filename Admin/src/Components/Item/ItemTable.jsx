@@ -1,14 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import ItemStructure from "./ItemStructure";
 
 function ItemTable(props) {
 
-    const [name, setName] = useState("")
-    const [price, setPrice] = useState("")
-    const [quantity, setQuantity] = useState("")
-    const [bulkSize, setBulkSize] = useState("")
     const [items, setItems] = useState([]);
 
     function getItems() {
@@ -25,7 +21,7 @@ function ItemTable(props) {
         console.log("Items:", props.item);
         itemComponents.push(
             <ItemStructure
-                key={item.id + "" + "" + item.name}
+                key={item.id + " " + item.name}
                 id={item.id}
                 name={item.name}
                 price={item.price}

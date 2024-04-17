@@ -1,11 +1,10 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BasketStructure from "./BasketStructure";
 
 function BasketTable(props) {
 
-    const [name, setName] = useState("")
     const [baskets, setBaskets] = useState([]);
 
     function getBaskets() {
@@ -22,7 +21,7 @@ function BasketTable(props) {
         console.log("Basket:", props.basket);
         basketComponents.push(
             <BasketStructure
-                key={basket.id + "" + "" + basket.name}
+                key={basket.id + " " + basket.name}
                 id={basket.id}
                 name={basket.name}
             />

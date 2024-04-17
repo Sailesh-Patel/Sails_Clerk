@@ -12,13 +12,6 @@ function BasketsDisplay() {
       .catch(error => console.error(error));
   }, []);
 
-  const deleteBasket = () => {
-    axios
-    .delete(`http://localhost:8088/basket/delete/1`)
-    .then(() => {
-    })
-  };
-
 
   const calculateTotalPrice = (items) => {
     if (!items || items.length === 0) {
