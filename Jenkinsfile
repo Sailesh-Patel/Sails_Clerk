@@ -34,9 +34,11 @@ pipeline {
         }
         stage("mvn clean install") {
             steps {
+                 dir('Frontend') {
                bat "mvn clean install" 
             }
             bat 'java -cp target/selenium-1.0-SNAPSHOT.jar com.qa.selenium.SeleniumTests'
+        }
         }
     
     }
