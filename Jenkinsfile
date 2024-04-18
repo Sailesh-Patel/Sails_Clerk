@@ -1,43 +1,36 @@
 pipeline {
+
     agent any
     stages {
-         stage("clean install") {
-            steps {
-               bat "mvn clean install" 
+
+        stage('Checkout Codebase'){
+            steps{
+                cleanWs()
+                checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],userRemoteConfigs:
+                [[url: 'https://github.com/Sailesh-Patel/Sails_Clerk.git']]]
             }
         }
-        stage("run tests") {
-            steps {
-               bat "mvn test" 
+
+        stage('Build'){
+            steps{
+                sh 'mkdir lib'
+                sh 'cd lib/ ; wget https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.7.0/junit-platform-console-standalone-1.7.0-all.jar'
+                sh 'cd src ; javac -cp "../lib/junit-platform-console-standalone-1.7.0-all.jar" AddItemDeleteBETesting.java App.java'
             }
         }
-        stage("npm install") {
-            steps {
-                dir('Frontend') {
-               bat "npm install" 
-                }
+
+        stage('Test'){
+            steps{
+                sh 'cd src/ ; java -jar ../lib/junit-platform-console-standalone-1.7.0-all.jar -cp "." --select-class CarTest --reports-dir="reports"'
+                junit 'src/reports/*-jupiter.xml'
             }
         }
-                stage("npm run build") {
-            steps {
-                dir('Frontend') {
-               bat "npm run build" 
-                }
+
+        stage('Deploy'){
+            steps{
+                sh 'cd src/ ; java App' 
             }
-        }
-                stage("xcopy") {
-            steps {
-                  dir('Frontend') {
-               bat "xcopy /y /i build c:\\reactApp" 
-                  }
-            }
-        }
-    
-    }
-    
-    post {
-          always {
-            archiveArtifacts artifacts: 'src/test/java/com/Inc/Project1/BE/selenium/testfile.txt', followSymlinks: false
         }
     }
+
 }
