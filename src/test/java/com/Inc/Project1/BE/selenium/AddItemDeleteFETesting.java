@@ -46,7 +46,7 @@ public class AddItemDeleteFETesting {
 
 		this.driver.get("http://localhost:3000");
 		WebElement adminButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton.click();
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
@@ -76,7 +76,7 @@ public class AddItemDeleteFETesting {
 		driver.navigate().refresh();
 
 		WebElement adminButton2 = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton2.click();
 
 		Thread.sleep(800); // Wait for 8 milliseconds
@@ -110,7 +110,7 @@ public class AddItemDeleteFETesting {
 		driver.navigate().refresh();
 
 		WebElement adminButton3 = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton3.click();
 
 		Thread.sleep(800); // Wait for 2 seconds
@@ -118,13 +118,13 @@ public class AddItemDeleteFETesting {
 		// Delete Item 1
 
 		WebElement delete = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(6) > button"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(6) > button"));
 		delete.click();
 
 		Thread.sleep(800); // Wait for 2 seconds
 
 		WebElement itemPage = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(2) > a"));
 		itemPage.click();
 
 		WebElement checkItemName = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(2)"));

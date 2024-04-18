@@ -96,10 +96,10 @@ function App() {
 
       {/* code held for testing */}
 
-              {/* <li class="nav-item ">
+              <li class="nav-item ">
                 <Link className="nav-item nav-link active" to='/createitems'
                   aria-describedby='Navigation link to the create items page'>Admin</Link>
-              </li> */}
+              </li> 
 </ul>
 
               </div>

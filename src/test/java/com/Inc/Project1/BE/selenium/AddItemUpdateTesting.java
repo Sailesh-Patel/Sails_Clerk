@@ -73,7 +73,7 @@ public class AddItemUpdateTesting {
 		driver.navigate().refresh();
 
 		WebElement update = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(4) > a"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(5) > a"));
 		update.click();
 
 		WebElement itemNameUpdate = this.driver.findElement(By.cssSelector("#Name"));
@@ -84,17 +84,17 @@ public class AddItemUpdateTesting {
 		WebElement submitUpdate = this.driver.findElement(By.cssSelector("#root > div > div > form > div > button"));
 		submitUpdate.click();
 
-		WebElement admin = this.driver.findElement(By.cssSelector("#root > div > nav > a:nth-child(2)"));
+		WebElement admin = this.driver.findElement(By.cssSelector("#root > div > nav > a"));
 		admin.click();
 
 		Thread.sleep(2000); // Wait for 2 seconds
 
 		WebElement checkItemName = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(1)"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1)"));
 		Assertions.assertEquals("Madri2", checkItemName.getText());
 
 		WebElement checkItemPrice = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2)"));
 		Assertions.assertEquals("18.99", checkItemPrice.getText());
 
 	}

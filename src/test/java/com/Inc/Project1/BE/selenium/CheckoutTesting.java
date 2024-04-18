@@ -64,7 +64,7 @@ public class CheckoutTesting {
 		// Need Admin page new item created
 
 		WebElement adminIcon = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminIcon.click();
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
@@ -101,7 +101,8 @@ public class CheckoutTesting {
 		driver.navigate().refresh();
 
 		WebElement goToBasket = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(4) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a > svg > path"));
+	
 		goToBasket.click();
 
 		// Add a short wait if necessary to ensure the click has been processed

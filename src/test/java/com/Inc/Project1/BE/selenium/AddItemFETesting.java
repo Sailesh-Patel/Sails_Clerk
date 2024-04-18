@@ -46,7 +46,7 @@ public class AddItemFETesting {
 
 		this.driver.get("http://localhost:3000");
 		WebElement adminButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton.click();
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
@@ -76,7 +76,7 @@ public class AddItemFETesting {
 		driver.navigate().refresh();
 
 		WebElement itemPage = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(2) > a"));
 		itemPage.click();
 
 		WebElement checkItemName = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(2)"));

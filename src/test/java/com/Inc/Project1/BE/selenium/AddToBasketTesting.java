@@ -60,7 +60,7 @@ public class AddToBasketTesting {
 		driver.navigate().refresh();
 
 		WebElement adminButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(6) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton.click();
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
@@ -85,21 +85,26 @@ public class AddToBasketTesting {
 		WebElement submit2 = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
 		submit2.click();
 		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(2000); // Wait for 2 seconds
+		Thread.sleep(800); // Wait for 2 seconds
 		// Now refresh the page
 		driver.navigate().refresh();
 
 		// move to item page to add to cart
-		WebElement itemsButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
-		itemsButton.click();
+//		WebElement itemsButton = this.driver
+//				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
+//		itemsButton.click();
 
-		WebElement add = this.driver.findElement(By.cssSelector("#itemCard > div > button"));
-		add.click();
 		Thread.sleep(1000);
+		
+		WebElement addToBasket = this.driver.findElement(By.cssSelector("#itemCard > div > button"));
+		addToBasket.click();
+
+		driver.navigate().refresh();
+
+		
 
 		WebElement basketButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(4) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a > svg > path"));
 		basketButton.click();
 
 		WebElement checkoutButton = this.driver

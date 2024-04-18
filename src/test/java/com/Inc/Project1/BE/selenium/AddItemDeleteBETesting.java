@@ -102,22 +102,22 @@ public class AddItemDeleteBETesting {
 		// delete item 1
 
 		WebElement delete = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(5) > button"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(6) > button"));
 		delete.click();
 
 		Thread.sleep(2000); // Wait for 2 seconds
 
-		WebElement admin2 = this.driver.findElement(By.cssSelector("#root > div > nav > a:nth-child(2)"));
-		admin2.click();
-
-		Thread.sleep(2000); // Wait for 2 seconds
+//		WebElement admin2 = this.driver.findElement(By.cssSelector("#root > div > nav > a:nth-child(2)"));
+//		admin2.click();
+//
+//		Thread.sleep(2000); // Wait for 2 seconds
 
 		WebElement checkItemName = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(1)"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1)"));
 		Assertions.assertEquals("Peroni", checkItemName.getText());
 
 		WebElement checkItemPrice = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2)"));
 		Assertions.assertEquals("34.99", checkItemPrice.getText());
 
 	}

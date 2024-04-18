@@ -73,11 +73,11 @@ public class AddItemTesting {
 		driver.navigate().refresh();
 
 		WebElement checkItemName = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(1)"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1)"));
 		Assertions.assertEquals("Madri", checkItemName.getText());
 
 		WebElement checkItemPrice = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(2)"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2)"));
 		Assertions.assertEquals("18.99", checkItemPrice.getText());
 
 	}

@@ -8,7 +8,7 @@
 		<version>3.2.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Sails_Clerk</groupId>
+	<groupId>com.Inc.Project1.BE</groupId>
 	<artifactId>Sails_Clerk</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Sails_Clerk</name>

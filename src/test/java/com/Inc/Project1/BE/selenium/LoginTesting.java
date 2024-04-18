@@ -61,7 +61,7 @@ public class LoginTesting {
 		driver.navigate().refresh();
 
 		WebElement basketIcon = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(4) > a"));
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a > svg > path"));
 		basketIcon.click();
 		// Add a short wait if necessary to ensure the click has been processed
 		Thread.sleep(800); // 0.8 seconds
