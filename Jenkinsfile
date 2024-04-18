@@ -3,11 +3,9 @@ pipeline {
     agent any
     stages {
 
-        stage('Checkout Codebase'){
-            steps{
-                cleanWs()
-                checkout scm: [$class: 'GitSCM', branches: [[name: '*/main']],userRemoteConfigs:
-                [[url: 'https://github.com/Sailesh-Patel/Sails_Clerk.git']]]
+              stage("clean install") {
+            steps {
+               bat "mvn clean install" 
             }
         }
 
