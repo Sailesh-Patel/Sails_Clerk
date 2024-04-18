@@ -10,7 +10,7 @@ pipeline {
         }
         stage("Test"){
             steps{
-                bat "mvn AddItemDeleteBETesting"
+                bat "AddItemDeleteBETesting"
             }
         }
     }
