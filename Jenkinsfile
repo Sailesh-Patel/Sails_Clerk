@@ -8,9 +8,19 @@ pipeline {
                bat "mvn clean install" 
             }
         }
-        stage("Test"){
+        stage("Folder"){
             steps{
-                bat "AddItemDeleteBETesting"
+                bat "ls"
+            }
+        }
+                stage("Folder src"){
+            steps{
+                bat "cd src"
+            }
+        }
+                stage("Test"){
+            steps{
+                bat "mvn test"
             }
         }
     }
