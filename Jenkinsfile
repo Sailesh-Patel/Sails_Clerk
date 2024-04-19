@@ -18,7 +18,7 @@ pipeline {
                 stage("xcopy") {
             steps {
                   dir('Frontend') {
-   bat 'xcopy C:\ProgramData\Jenkins\.jenkins\workspace\Sails_Clerk\Frontend\build\static C:\ProgramData\Jenkins\.jenkins\workspace\Sails_Clerk\src\main\resources\static /E /H /K'
+bat 'xcopy "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sails_Clerk\\Frontend\\build\\static" "C:\\ProgramData\\Jenkins\\.jenkins\\workspace\\Sails_Clerk\\src\\main\\resources\\static" /E /H /K'
                   }
             }
         }
