@@ -1,16 +1,6 @@
 pipeline {
     agent any
     stages {
-         stage("clean install") {
-            steps {
-               bat "mvn clean install" 
-            }
-        }
-        stage("run tests") {
-            steps {
-               bat "mvn test" 
-            }
-        }
         stage("npm install") {
             steps {
                 dir('Frontend') {
@@ -32,7 +22,16 @@ pipeline {
                   }
             }
         }
-    
+         stage("clean install") {
+            steps {
+               bat "mvn clean install" 
+            }
+        }
+        stage("run tests") {
+            steps {
+               bat "mvn test" 
+            }
+        }
     }
     
     post {
