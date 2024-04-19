@@ -18,7 +18,7 @@ pipeline {
                 stage("xcopy") {
             steps {
                   dir('Frontend') {
-               bat "xcopy /y /i build src\main\java\resources" 
+               bat "xcopy /y /i build src/main/java/resources" 
                   }
             }
         }
