@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddItemUpdateFETesting {
+public class AddItemDeleteFETest {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -79,17 +79,47 @@ public class AddItemUpdateFETesting {
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton2.click();
 
+		Thread.sleep(800); // Wait for 8 milliseconds
+
+		// second Item
+
+		WebElement itemName2 = this.driver.findElement(By.cssSelector("#name"));
+		itemName2.sendKeys("Peroni");
+
+		WebElement itemPrice2 = this.driver.findElement(By.cssSelector("#price"));
+		itemPrice2.sendKeys("34.99");
+
+		WebElement itemImage2 = this.driver.findElement(By.cssSelector("#image"));
+		itemImage2.sendKeys(
+				"https://www.thebottleclub.com/cdn/shop/files/peroni-nastro-azzurro-beer-multipack-24-x-330-ml-beer-33235553779827.jpg?v=1703664727&width=720");
+
+		WebElement itemImageAlt2 = this.driver.findElement(By.cssSelector("#imageAlt"));
+		itemImageAlt2.sendKeys("12 Bottles of Peroni Lager");
+
+		WebElement itemQuantity2 = this.driver.findElement(By.cssSelector("#quantity"));
+		itemQuantity2.sendKeys("1");
+
+		WebElement itemBulkSize2 = this.driver.findElement(By.cssSelector("#bulkSize"));
+		itemBulkSize2.sendKeys("24");
+
+		WebElement submit2 = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
+		submit2.click();
+		// Add a short wait if necessary to ensure the click has been processed
+		Thread.sleep(800); // Wait for 2 seconds
+		// Now refresh the page
+		driver.navigate().refresh();
+
+		WebElement adminButton3 = this.driver
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
+		adminButton3.click();
+
 		Thread.sleep(800); // Wait for 2 seconds
 
-		WebElement update = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(5) > a"));
-		update.click();
+		// Delete Item 1
 
-		WebElement itemNameUpdate = this.driver.findElement(By.cssSelector("#Name"));
-		itemNameUpdate.sendKeys("2");
-
-		WebElement submitUpdate = this.driver.findElement(By.cssSelector("#root > div > div > form > div > button"));
-		submitUpdate.click();
+		WebElement delete = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(6) > button"));
+		delete.click();
 
 		Thread.sleep(800); // Wait for 2 seconds
 
@@ -98,10 +128,10 @@ public class AddItemUpdateFETesting {
 		itemPage.click();
 
 		WebElement checkItemName = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(2)"));
-		Assertions.assertEquals("Name: Madri2", checkItemName.getText());
+		Assertions.assertEquals("Name: Peroni", checkItemName.getText());
 
 		WebElement checkItemPrice = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(3)"));
-		Assertions.assertEquals("Price: £18.99", checkItemPrice.getText());
+		Assertions.assertEquals("Price: £34.99", checkItemPrice.getText());
 
 	}
 }

@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddItemTesting {
+public class LoginTest {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -44,41 +44,32 @@ public class AddItemTesting {
 
 	void addItemTest() throws InterruptedException {
 
-		this.driver.get("http://localhost:3001");
+		this.driver.get("http://localhost:3000");
 
-		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
-		itemName.sendKeys("Madri");
+		WebElement username = this.driver.findElement(By.cssSelector("#name"));
+		username.sendKeys("Alco");
 
-		WebElement itemPrice = this.driver.findElement(By.cssSelector("#price"));
-		itemPrice.sendKeys("18.99");
+		WebElement password = this.driver
+				.findElement(By.cssSelector("#CreateBasket > div > div > input[type=password]:nth-child(5)"));
+		password.sendKeys("Holic");
 
-		WebElement itemImage = this.driver.findElement(By.cssSelector("#image"));
-		itemImage.sendKeys(
-				"https://www.thebottleclub.com/cdn/shop/files/madri-excepcional-lager-beer-12-x-330-ml-beer-32841797271667.jpg?v=1703680696&width=500");
-
-		WebElement itemImageAlt = this.driver.findElement(By.cssSelector("#imageAlt"));
-		itemImageAlt.sendKeys("12 Bottles of Madri Lager");
-
-		WebElement itemQuantity = this.driver.findElement(By.cssSelector("#quantity"));
-		itemQuantity.sendKeys("1");
-
-		WebElement itemBulkSize = this.driver.findElement(By.cssSelector("#bulkSize"));
-		itemBulkSize.sendKeys("12");
-
-		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
-		submit.click();
+		WebElement submit1 = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
+		submit1.click();
 		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(2000); // Wait for 2 seconds
+		Thread.sleep(800); // 0.8 seconds
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		WebElement checkItemName = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1)"));
-		Assertions.assertEquals("Madri", checkItemName.getText());
+		WebElement basketIcon = this.driver
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a > svg > path"));
+		basketIcon.click();
+		// Add a short wait if necessary to ensure the click has been processed
+		Thread.sleep(800); // 0.8 seconds
+		// Now refresh the page
+		driver.navigate().refresh();
 
-		WebElement checkItemPrice = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2)"));
-		Assertions.assertEquals("18.99", checkItemPrice.getText());
-
+		WebElement checkBasketName = this.driver
+				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(2) > h3"));
+		Assertions.assertEquals("Basket Name: Alco", checkBasketName.getText());
 	}
 }

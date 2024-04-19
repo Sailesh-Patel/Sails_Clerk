@@ -2,6 +2,7 @@ package com.Inc.Project1.BE.selenium;
 
 import java.time.Duration;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.junit.jupiter.api.Order;
@@ -22,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddToBasketTesting {
+public class AddItemFETest {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -44,21 +45,6 @@ public class AddToBasketTesting {
 	void addItemTest() throws InterruptedException {
 
 		this.driver.get("http://localhost:3000");
-
-		WebElement username = this.driver.findElement(By.cssSelector("#name"));
-		username.sendKeys("Alco");
-
-		WebElement password = this.driver
-				.findElement(By.cssSelector("#CreateBasket > div > div > input[type=password]:nth-child(5)"));
-		password.sendKeys("Holic");
-
-		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
-		submit.click();
-		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(800); // 0.8 seconds
-		// Now refresh the page
-		driver.navigate().refresh();
-
 		WebElement adminButton = this.driver
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
 		adminButton.click();
@@ -82,34 +68,22 @@ public class AddToBasketTesting {
 		WebElement itemBulkSize = this.driver.findElement(By.cssSelector("#bulkSize"));
 		itemBulkSize.sendKeys("12");
 
-		WebElement submit2 = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
-		submit2.click();
+		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
+		submit.click();
 		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(800); // Wait for 2 seconds
+		Thread.sleep(2000); // Wait for 2 seconds
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		// move to item page to add to cart
-//		WebElement itemsButton = this.driver
-//				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
-//		itemsButton.click();
+		WebElement itemPage = this.driver
+				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(2) > a"));
+		itemPage.click();
 
-		Thread.sleep(1000);
-		
-		WebElement addToBasket = this.driver.findElement(By.cssSelector("#itemCard > div > button"));
-		addToBasket.click();
+		WebElement checkItemName = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(2)"));
+		Assertions.assertEquals("Name: Madri", checkItemName.getText());
 
-		driver.navigate().refresh();
-
-		
-
-		WebElement basketButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a > svg > path"));
-		basketButton.click();
-
-		WebElement checkoutButton = this.driver
-				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(3) > button"));
-		checkoutButton.click();
+		WebElement checkItemPrice = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(3)"));
+		Assertions.assertEquals("Price: £18.99", checkItemPrice.getText());
 
 	}
 }

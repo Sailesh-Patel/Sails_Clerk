@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddItemFETesting {
+public class AddItemDeleteBETest {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -44,10 +44,7 @@ public class AddItemFETesting {
 
 	void addItemTest() throws InterruptedException {
 
-		this.driver.get("http://localhost:3000");
-		WebElement adminButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
-		adminButton.click();
+		this.driver.get("http://localhost:3001");
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
 		itemName.sendKeys("Madri");
@@ -75,15 +72,53 @@ public class AddItemFETesting {
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		WebElement itemPage = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(2) > a"));
-		itemPage.click();
+		// item 2
+		WebElement itemName2 = this.driver.findElement(By.cssSelector("#name"));
+		itemName2.sendKeys("Peroni");
 
-		WebElement checkItemName = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(2)"));
-		Assertions.assertEquals("Name: Madri", checkItemName.getText());
+		WebElement itemPrice2 = this.driver.findElement(By.cssSelector("#price"));
+		itemPrice2.sendKeys("34.99");
 
-		WebElement checkItemPrice = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(3)"));
-		Assertions.assertEquals("Price: £18.99", checkItemPrice.getText());
+		WebElement itemImage2 = this.driver.findElement(By.cssSelector("#image"));
+		itemImage2.sendKeys(
+				"https://www.thebottleclub.com/cdn/shop/files/peroni-nastro-azzurro-beer-multipack-24-x-330-ml-beer-33235553779827.jpg?v=1703664727&width=720");
+
+		WebElement itemImageAlt2 = this.driver.findElement(By.cssSelector("#imageAlt"));
+		itemImageAlt2.sendKeys("12 Bottles of Peroni Lager");
+
+		WebElement itemQuantity2 = this.driver.findElement(By.cssSelector("#quantity"));
+		itemQuantity2.sendKeys("1");
+
+		WebElement itemBulkSize2 = this.driver.findElement(By.cssSelector("#bulkSize"));
+		itemBulkSize2.sendKeys("24");
+
+		WebElement submit2 = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
+		submit2.click();
+		// Add a short wait if necessary to ensure the click has been processed
+		Thread.sleep(800); // Wait for 2 seconds
+		// Now refresh the page
+		driver.navigate().refresh();
+
+		// delete item 1
+
+		WebElement delete = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(6) > button"));
+		delete.click();
+
+		Thread.sleep(2000); // Wait for 2 seconds
+
+//		WebElement admin2 = this.driver.findElement(By.cssSelector("#root > div > nav > a:nth-child(2)"));
+//		admin2.click();
+//
+//		Thread.sleep(2000); // Wait for 2 seconds
+
+		WebElement checkItemName = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1)"));
+		Assertions.assertEquals("Peroni", checkItemName.getText());
+
+		WebElement checkItemPrice = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2)"));
+		Assertions.assertEquals("34.99", checkItemPrice.getText());
 
 	}
 }

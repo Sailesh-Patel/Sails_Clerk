@@ -22,7 +22,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class CheckoutTesting {
+public class AddToBasketTest {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -45,8 +45,6 @@ public class CheckoutTesting {
 
 		this.driver.get("http://localhost:3000");
 
-		// Need Login test and basket made
-
 		WebElement username = this.driver.findElement(By.cssSelector("#name"));
 		username.sendKeys("Alco");
 
@@ -58,14 +56,12 @@ public class CheckoutTesting {
 		submit.click();
 		// Add a short wait if necessary to ensure the click has been processed
 		Thread.sleep(800); // 0.8 seconds
-
+		// Now refresh the page
 		driver.navigate().refresh();
 
-		// Need Admin page new item created
-
-		WebElement adminIcon = this.driver
+		WebElement adminButton = this.driver
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
-		adminIcon.click();
+		adminButton.click();
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
 		itemName.sendKeys("Madri");
@@ -86,41 +82,34 @@ public class CheckoutTesting {
 		WebElement itemBulkSize = this.driver.findElement(By.cssSelector("#bulkSize"));
 		itemBulkSize.sendKeys("12");
 
-		WebElement submitItem = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
-		submitItem.click();
+		WebElement submit2 = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
+		submit2.click();
 		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(800); // Wait for 0.8 seconds
+		Thread.sleep(800); // Wait for 2 seconds
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		// Need to add item to basket
+		// move to item page to add to cart
+//		WebElement itemsButton = this.driver
+//				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a"));
+//		itemsButton.click();
 
+		Thread.sleep(1000);
+		
 		WebElement addToBasket = this.driver.findElement(By.cssSelector("#itemCard > div > button"));
 		addToBasket.click();
 
 		driver.navigate().refresh();
 
-		WebElement goToBasket = this.driver
+		
+
+		WebElement basketButton = this.driver
 				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(3) > a > svg > path"));
-	
-		goToBasket.click();
+		basketButton.click();
 
-		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(800); // Wait for 0.8 seconds
-		// Now refresh the page
-		driver.navigate().refresh();
-
-		WebElement checkout = this.driver
+		WebElement checkoutButton = this.driver
 				.findElement(By.cssSelector("#root > div > div > div > div > div > div > div:nth-child(3) > button"));
-		checkout.click();
+		checkoutButton.click();
 
-		WebElement newPhoneNumber = this.driver.findElement(By.cssSelector("#phone\\ number"));
-		newPhoneNumber.sendKeys("07814569785");
-
-		WebElement newEmail = this.driver.findElement(By.cssSelector("#email"));
-		newEmail.sendKeys("Alco-Holic@AA.com");
-
-		WebElement checkoutSubmit = this.driver.findElement(By.cssSelector("#SubmitCreateBasket"));
-		checkoutSubmit.click();
 	}
 }
