@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddItemFETest {
+public class AddItemFE {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;

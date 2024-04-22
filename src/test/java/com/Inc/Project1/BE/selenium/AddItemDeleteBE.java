@@ -23,7 +23,7 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 @TestMethodOrder(OrderAnnotation.class)
 @Sql(scripts = { "classpath:shop-schema.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 
-public class AddItemDeleteFETest {
+public class AddItemDeleteBE {
 
 	private RemoteWebDriver driver;
 	private WebDriverWait wait;
@@ -44,10 +44,7 @@ public class AddItemDeleteFETest {
 
 	void addItemTest() throws InterruptedException {
 
-		this.driver.get("http://localhost:3000");
-		WebElement adminButton = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
-		adminButton.click();
+		this.driver.get("http://localhost:3001");
 
 		WebElement itemName = this.driver.findElement(By.cssSelector("#name"));
 		itemName.sendKeys("Madri");
@@ -71,18 +68,11 @@ public class AddItemDeleteFETest {
 		WebElement submit = this.driver.findElement(By.cssSelector("#SubmitCreateItem"));
 		submit.click();
 		// Add a short wait if necessary to ensure the click has been processed
-		Thread.sleep(800); // Wait for 2 seconds
+		Thread.sleep(2000); // Wait for 2 seconds
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		WebElement adminButton2 = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
-		adminButton2.click();
-
-		Thread.sleep(800); // Wait for 8 milliseconds
-
-		// second Item
-
+		// item 2
 		WebElement itemName2 = this.driver.findElement(By.cssSelector("#name"));
 		itemName2.sendKeys("Peroni");
 
@@ -109,29 +99,26 @@ public class AddItemDeleteFETest {
 		// Now refresh the page
 		driver.navigate().refresh();
 
-		WebElement adminButton3 = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(5) > a"));
-		adminButton3.click();
-
-		Thread.sleep(800); // Wait for 2 seconds
-
-		// Delete Item 1
+		// delete item 1
 
 		WebElement delete = this.driver.findElement(By.cssSelector(
-				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(6) > button"));
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr:nth-child(1) > td:nth-child(6) > button"));
 		delete.click();
 
-		Thread.sleep(800); // Wait for 2 seconds
+		Thread.sleep(2000); // Wait for 2 seconds
 
-		WebElement itemPage = this.driver
-				.findElement(By.cssSelector("#navbarNavAltMarkup > div > ul > li:nth-child(2) > a"));
-		itemPage.click();
+//		WebElement admin2 = this.driver.findElement(By.cssSelector("#root > div > nav > a:nth-child(2)"));
+//		admin2.click();
+//
+//		Thread.sleep(2000); // Wait for 2 seconds
 
-		WebElement checkItemName = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(2)"));
-		Assertions.assertEquals("Name: Peroni", checkItemName.getText());
+		WebElement checkItemName = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(1)"));
+		Assertions.assertEquals("Peroni", checkItemName.getText());
 
-		WebElement checkItemPrice = this.driver.findElement(By.cssSelector("#itemCard > div > ul > li:nth-child(3)"));
-		Assertions.assertEquals("Price: £34.99", checkItemPrice.getText());
+		WebElement checkItemPrice = this.driver.findElement(By.cssSelector(
+				"#root > div > div > div > div:nth-child(3) > div > table > tbody > tr > td:nth-child(2)"));
+		Assertions.assertEquals("34.99", checkItemPrice.getText());
 
 	}
 }
