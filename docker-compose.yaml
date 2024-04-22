@@ -1,0 +1,16 @@
+version: "3.8"
+services: 
+  frontend:
+    build: ./frontend
+    container_name: frontend_c
+    ports: 
+      - '3000:3000'
+    stdin_open: true
+    tty: true  
+  sails_clerk:
+    build: /
+    container_name: backend_c
+    ports: 
+      - '8088:8088'
+    stdin_open: true
+    tty: true  
