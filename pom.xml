@@ -86,13 +86,19 @@
     <scope>test</scope>
 </dependency>
 
-		
+		<!--
     <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-devtools-v123</artifactId>
-    <version>4.19.1</version> <!-- Replace with the actual CDP version -->
+    <version>4.19.1</version> 
     </dependency>
+    -->
 
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.19.1</version>
+</dependency>
 
 	</dependencies>
 
