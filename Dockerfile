@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:17
 VOLUME /tmp
 EXPOSE 8088
 ADD target/spring-boot-docker.jar spring-boot-docker.jar
