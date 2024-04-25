@@ -14,6 +14,7 @@ import BasketEdit from './Components/Basket/BasketEdit.jsx';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import CheckOut from './Components/Checkout/CheckOut.jsx';
 import Support from './Components/Support/Support.jsx';
+import Reporting from './Components/Support/Reporting.jsx';
 
 
 
@@ -121,6 +122,7 @@ function App() {
               <Route path='/basket/update/:id' element={<BasketEdit />} />
               <Route path='/checkout' element={<CheckOut />} />
               <Route path='/support' element={<Support />} />
+              <Route path='/reporting' element={<Reporting />} />
             </Routes>
           </div>
 
